@@ -1,0 +1,347 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core" lang="en">
+
+    <ui:composition>
+
+
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body" style="padding: auto;">
+
+                        <c:if test="#{planesView.tipoMensajeR.equals('planCreada')}">
+
+                            <div class="container-fluid d-flex justify-content-center" style=" margin-bottom: 20px; margin-top: 50px;">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="border: 3px solid black;">
+                                    <strong>ERROR! VALIDE LOS DATOS!</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </c:if>
+
+
+                        <c:if test="#{planesView.tipoMensajeR.equals('planNoCreada')}">
+                            <div class="container-fluid d-flex justify-content-center" style=" margin-bottom: 20px; margin-top: 50px;">
+
+
+                                <div class="alert alert-success alert-dismissible fade show" role="alert" style="border: 3px solid black;">
+                                    <strong>RUTINA CREADA CON EXITO!</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </c:if>
+
+
+
+
+                        <h4 class="card-title" style="font-size: 30px; color: #0004FF; font-weight: bold; margin-bottom: 30px;"> Assign Nutritional Plan</h4>
+
+                        <div class="row">
+
+                            <div class="col-sm">
+
+                                <!-- Button trigger modal -->
+
+                                <button type="button" class="btn btn-success"  style="margin-bottom: 20px; font-weight: bold; font-size: 20px;" data-toggle="modal" data-target="#plan">
+                                     Assign Nutritional Plan
+                                </button>
+
+                                <a class="btn btn-info" href="index.xhtml" role="button" style="margin-bottom: 20px; font-weight: bold; font-size: 20px;">Update</a>
+<h:form>
+                    
+                            
+                                   <div class="form-group">
+ 
+                                <label for="idclienterplanss" style="font-weight: bold; font-size: 20px; color: black;"> id del instructor</label>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del instructor" value="#{planesView.obDiaPlan.plannutricionalPK.instructorId}" class="form-control" id="idclienterplanss" html5:placeholder="El id del instructor" style="border: 2px solid black;"> </h:inputText>
+
+                            </div>
+
+ 
+                            <div class="form-group">
+
+                                <label for="idclienterplan" style="font-weight: bold; font-size: 20px; color: black;"> id de cliente</label>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del cliente" value="#{planesView.obDiaPlan.plannutricionalPK.clienteId}" class="form-control" id="idclienterplan" html5:placeholder="El id del cliente" style="border: 2px solid black;"> </h:inputText>
+
+                            </div>
+
+                         
+
+                            <div class="form-group">
+                                <label for="temanutri" style="font-weight: bold; font-size: 20px; color: black;">Tema Nutricional</label>
+                                <h:inputText required="true" requiredMessage="ingresa el Tema Nutricional" value="#{planesView.obDiaPlan.temaNutricional}" class="form-control" id="temanutri" html5:placeholder="Tema Nutricional" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="idDia" style="font-weight: bold; font-size: 20px; color: black;">Dia</label>
+                                <h:inputText required="true" requiredMessage="ingresa el dia" value="#{planesView.obDiaPlan.dia}" class="form-control" id="idDia" html5:placeholder="Dia" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="desayuno" style="font-weight: bold; font-size: 20px; color: black;">Desayuno</label>
+                                <h:inputText required="true" requiredMessage="ingresa el alimento" value="#{planesView.obDiaPlan.desayuno}" class="form-control" id="desayuno" html5:placeholder="Alimento" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="almuerzo" style="font-weight: bold; font-size: 20px; color: black;">Almuerzo</label>
+                                <h:inputText required="true" requiredMessage="ingresa el alimento" value="#{planesView.obDiaPlan.almuerzo}" class="form-control" id="almuerzo" html5:placeholder="Alimento" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="merienda" style="font-weight: bold; font-size: 20px; color: black;">Merienda</label>
+                                <h:inputText required="true" requiredMessage="ingresa el alimento" value="#{planesView.obDiaPlan.cena}" class="form-control" id="merienda" html5:placeholder="Alimento" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                          
+
+                       <h:commandButton  action="#{planesView.crearPlan()}" value="Crear Plan" class="btn btn-info" style="border: 3px solid black; font-weight: bold; font-size: 20px; color: black;"></h:commandButton>
+
+                    
+                </h:form>
+                            </div>
+                              
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row clearfix" style="margin-top: 50px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+
+                                    <div class="body">
+                                        <h4 class="card-title" style="font-size: 30px; color: #0004FF; font-weight: bold; margin-bottom: 30px;">Nutritional Plans</h4>
+                                        <h:form>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                                    <thead>
+                                                        <tr>
+                                                          <th>ID Plan</th>
+                                                            <th>ID Cliente</th>
+                                                            <th>Tema nutricional</th>
+                                                            <th>Dia/Menú</th>
+                                                            <th>Desayuno</th>
+
+                                                            <th>Almuerzo</th>
+                                                            <th>Cena</th>
+                                                          
+                                                            <th>Eliminar</th>
+                                                            <th>Editar</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tfoot>
+                                                        <tr>
+                                                             <th>ID Plan</th>
+                                                            <th>ID Cliente</th>
+                                                            <th>Tema nutricional</th>
+                                                            <th>Dia/Menú</th>
+                                                            <th>Desayuno</th>
+
+                                                            <th>Almuerzo</th>
+                                                            <th>Cena</th>
+                                                       
+                                                            <th>Eliminar</th>
+                                                            <th>Editar</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    <tbody>
+                                                        <c:forEach items="#{planesView.listPlanesNutri}" var="listPlanesNutrici">
+                                                            <tr>
+                                                                <td>#{listPlanesNutrici.plannutricionalPK.idplanNutricional}</td>
+                                                                <td>#{listPlanesNutrici.plannutricionalPK.clienteId}</td>
+                                                                <td>#{listPlanesNutrici.temaNutricional}</td>
+                                                                <td>#{listPlanesNutrici.dia}</td>
+
+
+                                                                <td>#{listPlanesNutrici.desayuno}</td>
+                                                                <td>#{listPlanesNutrici.almuerzo}</td>
+                                                                <td>#{listPlanesNutrici.cena}</td>
+                                                                
+
+
+
+                                                                <td> <h:commandButton action="#{planesView.eliminarPlan(listPlanesNutrici)}" value="Delete" class="btn btn-danger btn-fw" style="margin-bottom: 20px; font-weight: bold; font-size: 20px;"></h:commandButton> </td>
+                                                                <td>  
+                                                                    <button type="button" class="btn btn-info btn-fw" style="margin-bottom: 20px; font-weight: bold; font-size: 20px;" data-toggle="modal" data-target="#editPlan">
+                                                                        Update
+                                                                    </button>
+                                                                </td>    
+
+                                                            </tr>
+                                                        </c:forEach> 
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </h:form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal fade" id="plan" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <h:form>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">ASIGNAR PLAN NUTRICIONAL</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            
+                                   <div class="form-group">
+ 
+                                <label for="idclienterplanss" style="font-weight: bold; font-size: 20px; color: black;"> id del instructor</label>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del instructor" value="#{planesView.objplanPK.instructorId}" class="form-control" id="idclienterplanss" html5:placeholder="El id del instructor" style="border: 2px solid black;"> </h:inputText>
+
+                            </div>
+
+ 
+                            <div class="form-group">
+
+                                <label for="idclienterplan" style="font-weight: bold; font-size: 20px; color: black;"> id de cliente</label>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del cliente" value="#{planesView.objplanPK.clienteId}" class="form-control" id="idclienterplan" html5:placeholder="El id del cliente" style="border: 2px solid black;"> </h:inputText>
+
+                            </div>
+
+                         
+
+                            <div class="form-group">
+                                <label for="temanutri" style="font-weight: bold; font-size: 20px; color: black;">Tema Nutricional</label>
+                                <h:inputText required="true" requiredMessage="ingresa el Tema Nutricional" value="#{planesView.obDiaPlan.temaNutricional}" class="form-control" id="temanutri" html5:placeholder="Tema Nutricional" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="idDia" style="font-weight: bold; font-size: 20px; color: black;">Dia</label>
+                                <h:inputText required="true" requiredMessage="ingresa el dia" value="#{planesView.obDiaPlan.dia}" class="form-control" id="idDia" html5:placeholder="Dia" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="desayuno" style="font-weight: bold; font-size: 20px; color: black;">Desayuno</label>
+                                <h:inputText required="true" requiredMessage="ingresa el alimento" value="#{planesView.obDiaPlan.desayuno}" class="form-control" id="desayuno" html5:placeholder="Alimento" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="almuerzo" style="font-weight: bold; font-size: 20px; color: black;">Almuerzo</label>
+                                <h:inputText required="true" requiredMessage="ingresa el alimento" value="#{planesView.obDiaPlan.almuerzo}" class="form-control" id="almuerzo" html5:placeholder="Alimento" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="merienda" style="font-weight: bold; font-size: 20px; color: black;">Merienda</label>
+                                <h:inputText required="true" requiredMessage="ingresa el alimento" value="#{planesView.obDiaPlan.cena}" class="form-control" id="merienda" html5:placeholder="Alimento" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                          
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+<!--
+
+        <div class="modal fade" id="editPlan" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <h:form>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">ACTUALIZAR PLAN NUTRICIONAL</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="form-group">
+
+                                <label for="idclienterplan" style="font-weight: bold; font-size: 20px; color: black;"> id de cliente</label>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del cliente" value="#{planesView.obDiaPlan.clienteId.id}" class="form-control" id="idclienterplan" html5:placeholder="El id del cliente" style="border: 2px solid black;"> </h:inputText>
+
+                            </div>
+                            
+                             <div class="form-group">
+
+                                <label for="idplan" style="font-weight: bold; font-size: 20px; color: black;"> id del plan</label>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del plan" value="#{planesView.obDiaPlan.idplanNutricional}" class="form-control" id="idplan" html5:placeholder="El id del plan" style="border: 2px solid black;"> </h:inputText>
+
+                            </div>
+
+                 
+
+                            <div class="form-group">
+                                <label for="temanutri" style="font-weight: bold; font-size: 20px; color: black;">Tema Nutricional</label>
+                                <h:inputText required="true" requiredMessage="ingresa el Tema Nutricional" value="#{planesView.obDiaPlan.temaNutricional}" class="form-control" id="temanutri" html5:placeholder="Tema Nutricional" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="idDia" style="font-weight: bold; font-size: 20px; color: black;">Dia</label>
+                                <h:inputText required="true" requiredMessage="ingresa el dia" value="#{planesView.obDiaPlan.dia}" class="form-control" id="idDia" html5:placeholder="Dia" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="desayuno" style="font-weight: bold; font-size: 20px; color: black;">Desayuno</label>
+                                <h:inputText required="true" requiredMessage="ingresa el alimento" value="#{planesView.obDiaPlan.desayuno}" class="form-control" id="desayuno" html5:placeholder="Alimento" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="almuerzo" style="font-weight: bold; font-size: 20px; color: black;">Almuerzo</label>
+                                <h:inputText required="true" requiredMessage="ingresa el alimento" value="#{planesView.obDiaPlan.almuerzo}" class="form-control" id="almuerzo" html5:placeholder="Alimento" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="merienda" style="font-weight: bold; font-size: 20px; color: black;">Merienda</label>
+                                <h:inputText required="true" requiredMessage="ingresa el alimento" value="#{planesView.obDiaPlan.cena}" class="form-control" id="merienda" html5:placeholder="Alimento" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                         
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <h:commandButton  action="#{planesView.actualizar()}" value="Actualizar" class="btn btn-info" style="border: 3px solid black; font-weight: bold; font-size: 20px; color: black;"></h:commandButton>
+
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        
+        -->
+        
+        
+        
+       
+    
+    </ui:composition>
+
+</html>
+

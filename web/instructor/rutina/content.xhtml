@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core" lang="en">
+
+    <ui:composition>
+
+
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body" style="padding: auto;">
+
+
+
+                        <h4 class="card-title" style="font-size: 30px; color: #0004FF; font-weight: bold; margin-bottom: 30px;">Assign Routines</h4>
+
+                        <div class="row">
+                            <c:if test="#{rutinasView.tipoMensajeR.equals('rutinaNoCreada')}">
+
+                                <div class="container-fluid d-flex justify-content-center" style=" margin-bottom: 20px; margin-top: 50px;">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="border: 3px solid black;">
+                                        <strong>ERROR! VALIDE LOS DATOS!</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </c:if>
+
+
+                            <c:if test="#{rutinasView.tipoMensajeR.equals('rutinaCreada')}">
+                                <div class="container-fluid d-flex justify-content-center" style=" margin-bottom: 20px; margin-top: 50px;">
+
+
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="border: 3px solid black;">
+                                        <strong>RUTINA CREADA CON EXITO!</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </c:if>
+
+
+
+                            <div class="col-sm">
+
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary"  style="margin-bottom: 20px; font-weight: bold; font-size: 20px;" data-toggle="modal" data-target="#rutina">
+                                    Assign Routines
+                                </button>
+
+
+                                <a class="btn btn-info" href="index.xhtml" role="button" style="margin-bottom: 20px; font-weight: bold; font-size: 20px;">Update</a>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+
+                                    <div class="body">
+                                        <h4 class="card-title" style="font-size: 30px; color: #0004FF; font-weight: bold; margin-bottom: 30px;">Routines</h4>
+
+                                        <h:form>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                                    <thead style="border: 2px solid black;">
+                                                        <tr>
+                                                            <th>ID Cliente</th>
+                                                            <th>ID Rutina</th>
+                                                            <th>Tema Muscular</th>
+
+                                                            <th>Repeticiones</th>
+
+                                                            <th>Musculos</th>
+                                                            <th>Maquinas</th>
+                                                            <th>Eliminar</th>
+                                                            <th>Editar</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>ID Cliente</th>
+                                                            <th>ID Rutina</th>
+                                                            <th>Tema Muscular</th>
+
+                                                            <th>Repeticiones</th>
+
+                                                            <th>Musculos</th>
+                                                            <th>Maquinas</th>
+                                                            <th>Eliminar</th>
+                                                            <th>Editar</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    <tbody>
+                                                        <c:forEach items="#{rutinasView.listRutinas}" var="listRutinas">
+                                                            <tr>
+                                                                <td>#{listRutinas.rutinaPK.clienteId}</td>
+                                                                <td>#{listRutinas.rutinaPK.idrutina}</td>
+                                                                <td>#{listRutinas.temaRutina}</td>
+
+
+                                                                <td>#{listRutinas.repeticiones}</td>
+
+                                                                <td>#{listRutinas.musculo}</td>
+                                                                <td>#{listRutinas.maquina}</td> 
+
+                                                                <td>  
+                                                                    <h:commandButton action="#{rutinasView.eliminarRutina(listRutinas)}" value="Delete" class="btn btn-danger btn-fw" style="height: 50px; font-weight: bold; font-size: 20px;"></h:commandButton>
+
+                                                                </td>  
+
+                                                                <td>  
+                                                                    <button type="button" class="btn btn-info btn-fw" style="margin-bottom: 20px; font-weight: bold; font-size: 20px;" data-toggle="modal" data-target="#rutinaAct">
+                                                                        Update
+                                                                    </button>
+                                                                </td>    
+
+                                                            </tr>
+                                                        </c:forEach> 
+                                                    </tbody>
+                                                </table>
+
+
+                                            </div>
+
+                                        </h:form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="rutina" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <h:form>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">ASIGNAR RUTINA</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+
+                                <label for="idinst" style="font-weight: bold; font-size: 20px; color: black;"> Id de Instructor</label>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del Instructor" value="#{rutinasView.objRutina.rutinaPK.instructorId}" class="form-control" id="idinst" html5:placeholder="El id del instructor" style="border: 2px solid black;"> </h:inputText>
+
+                            </div> 
+
+
+                            <div class="form-group">
+
+                                <label for="idclienter" style="font-weight: bold; font-size: 20px; color: black;"> Id de Cliente</label>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del cliente" value="#{rutinasView.objRutina.rutinaPK.clienteId}" class="form-control" id="idclienter" html5:placeholder="El id del cliente" style="border: 2px solid black;"> </h:inputText>
+
+                            </div> 
+                            <!--
+                               <div class="form-group">
+   
+                                   <label for="idejer" style="font-weight: bold; font-size: 20px; color: black;"> id Rutina</label>
+                                   <h:inputText required="true" requiredMessage="Ingresa el id del ejercicio" value="#{rutinasView.objRutina.rutinaPK.idrutina}" class="form-control" id="idejer" html5:placeholder="El id del ejercicio" style="border: 2px solid black;"> </h:inputText>
+   
+                               </div>
+                            -->
+
+
+                            <div class="form-group">
+                                <label for="temamusc" style="font-weight: bold; font-size: 20px; color: black;">Tema Muscular</label>
+                                <h:inputText required="true" requiredMessage="Ingresa el tema muscular" value="#{rutinasView.objRutina.temaRutina}" class="form-control" id="temamusc" html5:placeholder="Tema Muscular" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="repeticiones" style="font-weight: bold; font-size: 20px; color: black;">repeticiones</label>
+                                <h:inputText required="true" requiredMessage="Ingresa las repeticiones" value="#{rutinasView.objRutina.repeticiones}" class="form-control" id="repeticiones" html5:placeholder="Repeticiones" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="musculos" style="font-weight: bold; font-size: 20px; color: black;"> Msculo</label>
+                                <h:inputText required="true" requiredMessage="Ingresa el musculo" value="#{rutinasView.objRutina.musculo}" class="form-control" id="musculos" html5:placeholder="Musculo" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="maquinas" style="font-weight: bold; font-size: 20px; color: black;">Maquina</label>
+                                <h:inputText required="true" requiredMessage="Ingresa la maquina" value="#{rutinasView.objRutina.maquina}" class="form-control" id="maquinas" html5:placeholder="Maquina" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <h:commandButton  action="#{rutinasView.crearRutina()}" value="Crear Rutina" class="btn btn-warning" style="border: 3px solid black; font-weight: bold; font-size: 20px; color: black;"></h:commandButton>
+
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="rutinaAct" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+
+                <h:form>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">ACTUALIZAR RUTINA</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="form-group">
+
+                                <label for="idclienter" style="font-weight: bold; font-size: 20px; color: black;"> id de cliente</label>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del cliente" value="#{rutinasView.objRutina.clienteId.id}" class="form-control" id="idclienter" html5:placeholder="El id del cliente" style="border: 2px solid black;"> </h:inputText>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="idruti" style="font-weight: bold; font-size: 20px; color: black;"> id de la rutina</label>
+
+
+                                <h:inputText  required="true" requiredMessage="Ingresa el id dela rutina" value="#{rutinasView.objRutina.idrutina}" class="form-control" id="idruti" html5:placeholder="El id dela rutina" style="border: 2px solid black;"> </h:inputText>
+
+
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label for="temamusc" style="font-weight: bold; font-size: 20px; color: black;">Tema Muscular</label> 
+
+                                <h:inputText required="true" requiredMessage="Ingresa el tema muscular" value="#{rutinasView.objRutina.temaRutina}" class="form-control" id="temamusc" html5:placeholder="Tema Muscular" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+
+
+
+
+                            <div class="form-group">
+                                <label for="repeticiones" style="font-weight: bold; font-size: 20px; color: black;">repeticiones</label>
+                                <h:inputText required="true" requiredMessage="Ingresa las repeticiones" value="#{rutinasView.objRutina.repeticiones}" class="form-control" id="repeticiones" html5:placeholder="Repeticiones" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="musculos" style="font-weight: bold; font-size: 20px; color: black;"> Musculo</label>
+                                <h:inputText required="true" requiredMessage="Ingresa el musculo" value="#{rutinasView.objRutina.musculo}" class="form-control" id="musculos" html5:placeholder="Musculo" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="maquinas" style="font-weight: bold; font-size: 20px; color: black;">Nombre de la maquina</label>
+                                <h:inputText required="true" requiredMessage="Ingresa la maquina" value="#{rutinasView.objRutina.maquina}" class="form-control" id="maquinas" html5:placeholder="Maquina" style="border: 2px solid black;"> </h:inputText>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <h:commandButton action="#{rutinasView.actualizar()}" value="Actualizar" class="btn btn-info btn-fw" style="margin-top: 20px; margin-left: 20px;"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+
+            </div>
+        </div>
+
+
+
+
+
+    </ui:composition>
+
+</html>
+
+
+

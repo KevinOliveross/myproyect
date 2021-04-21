@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
+    </h:head>
+    <h:body style="background-image: url(https://fondosmil.com/fondo/4083.jpg);">
+        <div class="container-fluid d-flex justify-content-center shadow p-3 mb-5  rounded" style="margin-top: 50px; background-color: grey; width: 400px; padding-top: 20px; padding-bottom: 20px;" >
+            <h:form>
+                <c:if test="#{registropro.tipoMensajePro.equals('productoNoCreado')}">  
+
+                    <div class="container-fluid d-flex justify-content-center" style=" margin-bottom: 20px; margin-top: 50px;">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="border: 3px solid black;">
+                            <strong>ERROR!</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </c:if>
+
+
+                <c:if test="#{registropro.tipoMensajePro.equals('productoCreado')}">  
+                    <div class="container-fluid d-flex justify-content-center" style=" margin-bottom: 20px; margin-top: 50px;">
+
+
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="border: 3px solid black;">
+                            <strong>PRODUCTO CREADO!</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </c:if>
+                <h2 style="color: white;">Formulario-Producto</h2> 
+               
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" style="color: white; font-size: 20px;">Nombre</label>
+                    <h:inputText style="border: 2px solid black;"  class="form-control" id="exampleInputEmail1" value="#{registropro.ojbPro.nombre}"/>
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label" style="color: white; font-size: 20px;">Precio</label>
+                    <h:inputText style="border: 2px solid black;"  class="form-control" id="exampleInputPassword1" value="#{registropro.ojbPro.precio}" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label" style="color: white; font-size: 20px;">Cantidad</label>
+                    <h:inputText style="border: 2px solid black;"  class="form-control" id="exampleInputCantidad" value="#{registropro.ojbPro.cantidad}" />
+                </div>
+
+
+
+                <h:commandButton style="border: 2px solid black;" class="btn btn-primary" value="enviar" action="#{registropro.registrarPro()}"/>
+            </h:form>
+
+
+            <p:growl id="messages" showDetail="true"/>
+           
+
+        </div>
+        
+          <div class="container-fluid d-flex justify-content-center shadow p-3 mb-5  rounded" style="margin-top: 50px; background-color: grey; width: 400px; padding-top: 20px; padding-bottom: 20px;" >
+           
+            <h:form enctype="multipart/form-data">
+                <p:fileUpload value="#{registropro.file}" mode="simple" label="Seleccionar" />
+                <p:commandButton value="Submit" ajax="false" action="#{registropro.upload()}" styleClass="p-mt-3 ui-button-outlined p-d-block" style=" margin-top: 10px;"/> 
+            </h:form>
+          </div>
+            
+    </h:body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
+</html>

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+         <!-- Required meta tags -->
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"/>
+
+        <title>Contactenos</title>
+    </h:head>
+    <h:body>
+       
+        <h1 class="d-flex justify-content-center" style="margin-top: 30px;">CONTACTENOS!</h1>
+
+  <div class="container" style="margin-top: 60px;">
+    <div class="row">
+      <div class="col-sm">
+        <div class="card" style="width: 10rem; border: 2px solid rgb(255, 255, 255);">
+          <img src="#{request.contextPath}/imagenes/facebook.png" class="card-img-top" alt="..."/>
+          <div class="card-body">
+            <h5 class="card-title">Facebook</h5>
+            <p class="card-text">Nuestro Facebook.</p>
+            <a href="https://www.facebook.com/pg/People56GYM/about/?ref=page_internal" class="btn btn-primary">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card" style="width: 10rem; border: 2px solid rgb(255, 255, 255);">
+          <img src="#{request.contextPath}/imagenes/gmail.png" class="card-img-top" alt="..." style="height: 156px;"/>
+          <div class="card-body">
+            <h5 class="card-title">Correo</h5>
+            <p class="card-text">Nuestro Correo.</p>
+            <a href="mailto:people56gymraul@hotmail.com" class="btn btn-primary" style="margin-top: 25px;">Correo</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card" style="width: 10rem; border: 2px solid rgb(255, 255, 255);">
+          <img src="#{request.contextPath}/imagenes/maps.png" class="card-img-top" alt="..."/>
+          <div class="card-body">
+            <h5 class="card-title">Ubicacion</h5>
+            <p class="card-text">Nuestra Ubicacion.</p>
+            <a href="https://wego.here.com/directions/mix//People-56-GYM-CAFD,-91-Carrera-56-2,-Puente-Aranda,-Bogot%C3%A1,-d.C.,-111621:e-eyJuYW1lIjoiUGVvcGxlIDU2IEdZTSBDQUZEIiwiYWRkcmVzcyI6IkNhcnJlcmEgNTYgIyAyIC0gOTEsIEJvZ290XHUwMGUxLCBDb2xvbWJpYSIsImxhdGl0dWRlIjo0LjYxNzM5NzkzNjg0MjEsImxvbmdpdHVkZSI6LTc0LjEyMTgxMjIxNTc5LCJwcm92aWRlck5hbWUiOiJmYWNlYm9vayIsInByb3ZpZGVySWQiOjQyMzUwOTc4MTA2ODIyOH0=?map=4.61732,-74.12173,15,normal&fb_locale;=es_ES"
+              class="btn btn-primary">Ubicacion</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card" style="width: 10rem; border: 2px solid rgb(255, 255, 255);">
+          <img src="#{request.contextPath}/imagenes/messenger.png" class="card-img-top" alt="..."/>
+          <div class="card-body">
+            <h5 class="card-title">Messenger</h5>
+            <p class="card-text">Nuestro Messenger.</p>
+            <a href="https://m.me/People56GYM?fbclid=IwAR0eQL_f24n-sLTV_6UyHafEpUFVGJ5HVs6tMJtHb4Qg72QQfbrDJlzRT8g"
+              class="btn btn-primary">Messenger</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card" style="width: 10rem; border: 2px solid rgb(255, 255, 255);">
+          <img src="#{request.contextPath}/imagenes/numero.png" class="card-img-top" alt="..."/>
+          <div class="card-body">
+            <h5 class="card-title">Telefono</h5>
+            <p class="card-text">Nuestro Telefono.</p>
+            <a href="tel:+(1)4141892" class="btn btn-primary">Telefono</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card" style="width: 10rem; border: 2px solid rgb(255, 255, 255);">
+          <img src="#{request.contextPath}/imagenes/form.png" class="card-img-top" alt="..."/>
+          <div class="card-body">
+            <h5 class="card-title">Formulario</h5>
+            <p class="card-text">Formulario de contacto.</p>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Formulario
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Formulario de contacto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Tu nombre</label>
+                <input type="text" class="form-control" id="name" placeholder="Tu nombre"/>
+              </div>
+              <div class="mb-3">
+                <label for="apellido" class="form-label">Tu apellido</label>
+                <input type="text" class="form-control" id="apellido" placeholder="Tu apellido"/>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Tu Correo</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+              </div>
+              <div class="mb-3">
+                <label for="numero" class="form-label">Tu Numero</label>
+                <input type="text" class="form-control" id="numero" placeholder="Tu numero"/>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Escribenos</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+    </h:body>
+</html>
+

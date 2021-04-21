@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
+
+        <title>Send Emails</title>
+
+    </h:head>
+    <h:body style="background-color: #3B3A3B;">
+        <div class="container"> 
+            <div class="row">
+
+                <div class="col-sm" style=" margin-top: 110px; margin-left: -50px;">
+                    <!--
+                    
+                    <table class="table" style="border: 3px solid black;">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color: white">
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr style="background-color: white;">
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr style="background-color: white;">
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    -->
+
+                </div>
+                <div class="col-sm" style=" margin-left: 50px;">
+
+
+                    <div style="text-align: center; margin-top: 30px;">    
+                        <h1 style=" color: white;">Send Email</h1>
+
+                    </div>
+
+                    <h:form id="emailForm" style="border: 3px solid black; width: 500px; background-color: #AAA6AB; margin-top: 30px; margin-bottom: 50px;">
+                        <p:messages id="messages" severity="error" showDetail="true" autoUpdate="true"/>
+
+
+                        <label for="De" class="d-flex justify-content-center" style=" color: black; font-size: 26px;">From: </label> 
+                        <div class="form-group d-flex justify-content-center">
+
+                            <h:inputText value="#{emailJSFManagedBean.from}"
+                                         validator="#{emailJSFManagedBean.validateEmail}"
+                                         label="from"
+                                         id="from"
+                                         html5:placeholder="De"
+                                         size="50" class="form-control" style="width: 400px; border: 2px solid black;">
+                            </h:inputText>
+                            <h:message for="from" style="color:red"/>
+                        </div>
+
+
+                        <label for="para" class="d-flex justify-content-center" style=" color: black; font-size: 26px;">To: </label> 
+                        <div class="form-group d-flex justify-content-center">
+
+                            <h:inputText value="#{emailJSFManagedBean.to}" required="true"
+                                         validator="#{emailJSFManagedBean.validateEmail}"
+                                         label="to"
+                                         id="to"
+                                         html5:placeholder="Para"
+                                         size="50" class="form-control" style="width: 400px; border: 2px solid black;">
+                            </h:inputText>
+                            <h:message for="to" style="color:red"/>
+                        </div>
+                        <label for="asunto" class="d-flex justify-content-center" style=" color: black; font-size: 26px;">Subject: </label> 
+                        <div class="form-group d-flex justify-content-center">
+
+                            <h:inputText value="#{emailJSFManagedBean.subject}"
+                                         validatorMessage="Requiere el Asunto"
+                                         label="subject"
+                                         id="subject"
+                                         html5:placeholder="Asunto"
+                                         size="50" class="form-control" style="width: 400px; border: 2px solid black;" >
+                            </h:inputText>
+
+                            <p:message for="subject" style="color: red"/>
+                        </div>
+                        <!--
+                      <p:outputLabel value="SMTP:"/>
+                      <p:inputText id="smtp"
+                                   validatorMessage="SMTP requiere un direccion IP"
+                                   value="#{emailJSFManagedBean.smtp}"
+                                   size="50">
+                          <f:validateRequired for="smtp"/>             
+                      </p:inputText>
+                      <h:message for="subject" style="color:red"/>
+        
+                      <h:outputLabel value="USUARIO: "/>
+                      <h:inputText id="usuario" value="#{emailJSFManagedBean.username}"
+                                   size="50">
+                      </h:inputText>
+                      <h:message for="usuario" style="color:red"/>
+                      <h:outputLabel value="PASSWORD: "/>
+                      <h:inputText id="password" value="#{emailJSFManagedBean.password}"
+                                     size="50">
+                      </h:inputText>
+                      
+                       <p:message style="color: red" for="password"/>
+                       
+                      
+                      <p:outputLabel value="Puerto:"/>
+                      <p:inputText id="puerto" value="#{emailJSFManagedBean.port}"
+                                   size="50" style="margin-right: 50px">
+                      </p:inputText>
+                      
+                      <p:message style="color: red" for="puerto"/>
+                        -->  
+
+                        <label for="mensaje" class="d-flex justify-content-center" style=" color: black; font-size: 26px;">Message: </label> 
+                        <div class="form-group d-flex justify-content-center">
+
+
+                            <p:inputTextarea id="descr" cols="50" rows="5"
+                                             html5:placeholder="Write a message"
+                                             value="#{emailJSFManagedBean.descr}" class="form-control" style="width: 400px; border: 2px solid black;">
+                            </p:inputTextarea>
+
+                            <p:message style="color: red" for="descr"/>
+
+
+                        </div>
+                        <div class="form-group d-flex justify-content-center">
+                            <p:commandButton action="#{emailJSFManagedBean.submitEmail}"
+                                             value="Send" id="submit" class="btn btn-primary" style="border: 2px solid black;"/>
+                        </div>
+
+
+
+                    </h:form>
+                </div>
+                <div class="col-sm" >
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
+    </h:body>
+
+
+
+
+</html>

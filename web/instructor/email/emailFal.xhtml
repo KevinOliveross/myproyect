@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
+
+        <title>Send Emails</title>
+
+    </h:head>
+    <h:body  style="background-color: #3B3A3B;">
+
+
+        <div class="d-flex justify-content-center" style=" margin-top: 50px;">
+
+
+            <h:form id="emailFalForm">
+                <div style="text-align: center">    
+                    <div class="card text-white bg-danger mb-3" style="max-width: 22rem; border: solid 2px black;">
+                        <div class="card-header">¡HA OCURRIDO UN ERROR!</div>
+                        <div class="card-body">
+                            <h2 class="card-title">No se ha envíado el correo, vuelva a intentarlo</h2>
+                        </div>
+                    </div>
+
+                    <p:commandButton id="atras" value="Atras" action="email" class="btn btn-info" style=" border: solid 2px black;"/>
+                </div>
+                <hr></hr>
+
+            </h:form>
+
+        </div>
+    </h:body>
+</html>

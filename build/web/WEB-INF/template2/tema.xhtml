@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <!-- plugins:css -->
+        <link rel="stylesheet" href="#{request.contextPath}/assets/vendors/mdi/css/materialdesignicons.min.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/assets/vendors/css/vendor.bundle.base.css"/>
+        <!-- Layout styles -->
+        <link rel="stylesheet" href="#{request.contextPath}/assets/css/style.css"/>
+        <!-- End layout styles -->
+        <link rel="shortcut icon" href="#{request.contextPath}/assets/images/favicon.icov" />
+
+    </h:head>
+
+    <h:body>
+
+        <div class="container-scroller">
+        <ui:insert name="nav">
+            <ui:include src="nav.xhtml"></ui:include>
+        </ui:insert>
+        
+            <div class="container-fluid page-body-wrapper">
+        <ui:insert name="menu">
+            <ui:include src="menu.xhtml"></ui:include>
+        </ui:insert>
+                <div class="main-panel">
+                    <div class="content-wrapper">
+        <ui:insert name="contenido">
+            <ui:include src="contenido.xhtml"></ui:include>
+        </ui:insert>
+                        </div>
+        <ui:insert name="footer">
+            <ui:include src="footer.xhtml"></ui:include>
+        </ui:insert>
+                </div>
+            </div>
+        </div>
+
+    
+        
+
+
+
+        <!-- plugins:js -->
+        <script src="#{request.contextPath}/assets/vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="#{request.contextPath}/assets/vendors/chart.js/Chart.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="#{request.contextPath}/assets/js/off-canvas.js"></script>
+        <script src="#{request.contextPath}/assets/js/hoverable-collapse.js"></script>
+        <script src="#{request.contextPath}/assets/js/misc.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page -->
+        <script src="#{request.contextPath}/assets/js/dashboard.js"></script>
+        <script src="#{request.contextPath}/assets/js/todolist.js"></script>
+
+
+    </h:body>
+
+</html>
