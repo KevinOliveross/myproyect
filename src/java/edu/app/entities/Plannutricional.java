@@ -8,11 +8,10 @@ package edu.app.entities;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,19 +28,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Plannutricional.findAll", query = "SELECT p FROM Plannutricional p")
-    , @NamedQuery(name = "Plannutricional.findByIdplanNutricional", query = "SELECT p FROM Plannutricional p WHERE p.plannutricionalPK.idplanNutricional = :idplanNutricional")
+    , @NamedQuery(name = "Plannutricional.findByIdplanNutricional", query = "SELECT p FROM Plannutricional p WHERE p.idplanNutricional = :idplanNutricional")
     , @NamedQuery(name = "Plannutricional.findByDia", query = "SELECT p FROM Plannutricional p WHERE p.dia = :dia")
     , @NamedQuery(name = "Plannutricional.findByDesayuno", query = "SELECT p FROM Plannutricional p WHERE p.desayuno = :desayuno")
     , @NamedQuery(name = "Plannutricional.findByCena", query = "SELECT p FROM Plannutricional p WHERE p.cena = :cena")
     , @NamedQuery(name = "Plannutricional.findByAlmuerzo", query = "SELECT p FROM Plannutricional p WHERE p.almuerzo = :almuerzo")
     , @NamedQuery(name = "Plannutricional.findByTemaNutricional", query = "SELECT p FROM Plannutricional p WHERE p.temaNutricional = :temaNutricional")
-    , @NamedQuery(name = "Plannutricional.findByInstructorId", query = "SELECT p FROM Plannutricional p WHERE p.plannutricionalPK.instructorId = :instructorId")
-    , @NamedQuery(name = "Plannutricional.findByClienteId", query = "SELECT p FROM Plannutricional p WHERE p.plannutricionalPK.clienteId = :clienteId")})
+    , @NamedQuery(name = "Plannutricional.findByInstructorId", query = "SELECT p FROM Plannutricional p WHERE p.instructorId = :instructorId")
+    , @NamedQuery(name = "Plannutricional.findByClienteId", query = "SELECT p FROM Plannutricional p WHERE p.clienteId = :clienteId")})
 public class Plannutricional implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected PlannutricionalPK plannutricionalPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idplanNutricional")
+    private Integer idplanNutricional;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 15)
@@ -67,39 +69,39 @@ public class Plannutricional implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "temaNutricional")
     private String temaNutricional;
-    @JoinColumn(name = "cliente_id", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cliente cliente;
-    @JoinColumn(name = "instructor_id", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Instructor instructor;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "instructor_id")
+    private int instructorId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "cliente_id")
+    private int clienteId;
 
     public Plannutricional() {
     }
 
-    public Plannutricional(PlannutricionalPK plannutricionalPK) {
-        this.plannutricionalPK = plannutricionalPK;
+    public Plannutricional(Integer idplanNutricional) {
+        this.idplanNutricional = idplanNutricional;
     }
 
-    public Plannutricional(PlannutricionalPK plannutricionalPK, String dia, String desayuno, String cena, String almuerzo, String temaNutricional) {
-        this.plannutricionalPK = plannutricionalPK;
+    public Plannutricional(Integer idplanNutricional, String dia, String desayuno, String cena, String almuerzo, String temaNutricional, int instructorId, int clienteId) {
+        this.idplanNutricional = idplanNutricional;
         this.dia = dia;
         this.desayuno = desayuno;
         this.cena = cena;
         this.almuerzo = almuerzo;
         this.temaNutricional = temaNutricional;
+        this.instructorId = instructorId;
+        this.clienteId = clienteId;
     }
 
-    public Plannutricional(int idplanNutricional, int instructorId, int clienteId) {
-        this.plannutricionalPK = new PlannutricionalPK(idplanNutricional, instructorId, clienteId);
+    public Integer getIdplanNutricional() {
+        return idplanNutricional;
     }
 
-    public PlannutricionalPK getPlannutricionalPK() {
-        return plannutricionalPK;
-    }
-
-    public void setPlannutricionalPK(PlannutricionalPK plannutricionalPK) {
-        this.plannutricionalPK = plannutricionalPK;
+    public void setIdplanNutricional(Integer idplanNutricional) {
+        this.idplanNutricional = idplanNutricional;
     }
 
     public String getDia() {
@@ -142,26 +144,26 @@ public class Plannutricional implements Serializable {
         this.temaNutricional = temaNutricional;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getInstructorId() {
+        return instructorId;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setInstructorId(int instructorId) {
+        this.instructorId = instructorId;
     }
 
-    public Instructor getInstructor() {
-        return instructor;
+    public int getClienteId() {
+        return clienteId;
     }
 
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (plannutricionalPK != null ? plannutricionalPK.hashCode() : 0);
+        hash += (idplanNutricional != null ? idplanNutricional.hashCode() : 0);
         return hash;
     }
 
@@ -172,7 +174,7 @@ public class Plannutricional implements Serializable {
             return false;
         }
         Plannutricional other = (Plannutricional) object;
-        if ((this.plannutricionalPK == null && other.plannutricionalPK != null) || (this.plannutricionalPK != null && !this.plannutricionalPK.equals(other.plannutricionalPK))) {
+        if ((this.idplanNutricional == null && other.idplanNutricional != null) || (this.idplanNutricional != null && !this.idplanNutricional.equals(other.idplanNutricional))) {
             return false;
         }
         return true;
@@ -180,7 +182,7 @@ public class Plannutricional implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.app.entities.Plannutricional[ plannutricionalPK=" + plannutricionalPK + " ]";
+        return "edu.app.entities.Plannutricional[ idplanNutricional=" + idplanNutricional + " ]";
     }
-
+    
 }

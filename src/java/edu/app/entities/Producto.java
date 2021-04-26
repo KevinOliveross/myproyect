@@ -6,23 +6,18 @@
 package edu.app.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -59,8 +54,6 @@ public class Producto implements Serializable {
     @NotNull
     @Column(name = "cantidad")
     private int cantidad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
-    private Collection<Ordencompra> ordencompraCollection;
 
     public Producto() {
     }
@@ -68,7 +61,16 @@ public class Producto implements Serializable {
     public Producto(Integer idproducto) {
         this.idproducto = idproducto;
     }
-
+     
+       public Producto(String nombre, String precio, int cantidad) {
+       
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+    }
+    
+    
+    
     public Producto(Integer idproducto, String nombre, String precio, int cantidad) {
         this.idproducto = idproducto;
         this.nombre = nombre;
@@ -106,15 +108,6 @@ public class Producto implements Serializable {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-    }
-
-    @XmlTransient
-    public Collection<Ordencompra> getOrdencompraCollection() {
-        return ordencompraCollection;
-    }
-
-    public void setOrdencompraCollection(Collection<Ordencompra> ordencompraCollection) {
-        this.ordencompraCollection = ordencompraCollection;
     }
 
     @Override

@@ -5,9 +5,8 @@
  */
 package edu.app.controlador;
 
-import edu.app.entities.Cliente;
+
 import edu.app.entities.Rutina;
-import edu.app.entities.RutinaPK;
 import edu.app.facade.ClienteFacadeLocal;
 import edu.app.facade.RutinaFacadeLocal;
 import java.io.Serializable;
@@ -47,14 +46,14 @@ public class rutinasView implements Serializable {
     RutinaFacadeLocal RutinaFacadeLocal;
     
     private int idCliente =1000121212;
-    private RutinaPK objRutinaPK = new RutinaPK();
+   
 
     public rutinasView() {
     }
 
     @PostConstruct
     public void init() {
-        objRutinaPK.setClienteId(idCliente);
+       
         listRutinas.addAll(RutinaFacadeLocal.findAll());
 
     }
@@ -146,12 +145,5 @@ public class rutinasView implements Serializable {
         this.idCliente = idCliente;
     }
 
-    public RutinaPK getObjRutinaPK() {
-        return objRutinaPK;
-    }
-
-    public void setObjRutinaPK(RutinaPK objRutinaPK) {
-        this.objRutinaPK = objRutinaPK;
-    }
 
 }

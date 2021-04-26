@@ -6,7 +6,6 @@
 package edu.app.facade;
 
 import edu.app.entities.Plannutricional;
-import edu.app.entities.PlannutricionalPK;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,7 +29,5 @@ public interface PlannutricionalFacadeLocal {
     List<Plannutricional> findRange(int[] range);
 
     int count();
-
-    public void create(PlannutricionalPK objplanPK);
     
 }

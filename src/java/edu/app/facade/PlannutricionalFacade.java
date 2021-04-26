@@ -6,7 +6,6 @@
 package edu.app.facade;
 
 import edu.app.entities.Plannutricional;
-import edu.app.entities.PlannutricionalPK;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,11 +27,6 @@ public class PlannutricionalFacade extends AbstractFacade<Plannutricional> imple
 
     public PlannutricionalFacade() {
         super(Plannutricional.class);
-    }
-
-    @Override
-    public void create(PlannutricionalPK objplanPK) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

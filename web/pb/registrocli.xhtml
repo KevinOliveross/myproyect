@@ -21,10 +21,6 @@
                     <a class="cursor-pointer" href="#{request.contextPath}/index.xhtml"><img src="../fotos/logo.png" alt="Logo"/></a>
                 </div>
                 <ul class="flex w-1/2 justify-evenly items-center">
-                    <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a 
-                            href="">About Us</a></li>
-                    <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a
-                            href="">Quote</a></li>
                     <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a
                             href="">Contact Us</a></li>
                     <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a
@@ -40,14 +36,12 @@
                 </div>
                 <div class="flex flex-col col-start-2 col-end-4 p-3">
                     <h1 class="text-4xl font-light text-center">Registro</h1>
-                    
-                    <c:if test="#{registroClient.tipoMensaje.equals('registrado')}"> 
+                    <c:if test="#{registroView.mensaje.equalsIgnoreCase('Si')}">
                         <div class="bg-green-500 mx-4 my-2 rounded-sm">
                             <h1 class="text-sm font-semibold p-2 text-center">Registro Exitoso</h1>
                         </div>
                     </c:if>
-                    
-                        <c:if test="#{registroClient.tipoMensaje.equals('no_Registrado')}"> 
+                    <c:if test="#{registroView.mensaje.equalsIgnoreCase('No')}">
                         <div class="bg-red-600 mx-4 my-2 rounded-sm">
                             <h1 class="text-sm font-semibold p-2 text-center">Ups!,Registro Fallido</h1>
                         </div>
@@ -56,62 +50,55 @@
                         <div class="flex flex-col ">
                             <label for="tipoId" class="font-semibold text-sm px-3">Tipo Identificacion</label>
                             <h:message for="tipoId" style="color:red"></h:message>
-                            <h:selectOneMenu label="TipoId" id="tipoId" value="#{registroClient.objCliente.tipoid}" class="outline-none cursor-pointer p-1 my-1 mx-4 border border-purple-400">
+                            <h:selectOneMenu label="TipoId" id="tipoId" value="#{registroView.objcliente.tipoid}" class="outline-none cursor-pointer p-1 my-1 mx-4 border border-purple-400">
                                 <f:selectItem  itemLabel="Cedula" itemValue="Cedula"></f:selectItem>
                                 <f:selectItem  itemLabel="T.I" itemValue="Tarjeta de Identidad"></f:selectItem>
                                 <f:selectItem  itemLabel="Pasaporte" itemValue="Pasaporte"></f:selectItem>
                             </h:selectOneMenu>    
                             <label for="identificacion" class="font-semibold text-sm px-3">Identificacion</label>
                             <h:message for="identificacion" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese id" value="#{registroClient.objCliente.idCliente}" html5:placeholder="Numero identificacion" id="identificacion" class="p-1 my-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese id" value="#{registroView.objcliente.id}" html5:placeholder="Numero identificacion" id="identificacion" class="p-1 my-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                             <label for="Nombre" class="font-semibold text-sm px-3">Nombres</label>
                             <h:message for="Nombre" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese Nombres" value="#{registroClient.objCliente.nombre}" html5:placeholder="Ingresa tus Nombres" id="Nombre"  class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese Nombres" value="#{registroView.objcliente.nombre}" html5:placeholder="Ingresa tus Nombres" id="Nombre"  class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                             <label for="Apellido" class="font-semibold text-sm px-3">Apellidos</label>
                             <h:message for="Apellido" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese Apellidos" value="#{registroClient.objCliente.apellido}" html5:placeholder="Ingresa tus Apellidos" id="Apellido" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese Apellidos" value="#{registroView.objcliente.apellido}" html5:placeholder="Ingresa tus Apellidos" id="Apellido" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                             <label for="Edad" class="font-semibold text-sm px-3">Edad</label>
                             <h:message for="Edad" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese edad" value="#{registroClient.objCliente.edad}" html5:placeholder="Ingresa tu Edad" id="Edad" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
-                            <label for="Genero" class="font-semibold text-sm px-3">Genero</label>
-                            <h:message for="Genero" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese genero" value="#{registroClient.objCliente.genero}" html5:placeholder="Ingresa tu Genero" id="Genero" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese edad" value="#{registroView.objcliente.edad}" html5:placeholder="Ingresa tu Edad" id="Edad" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                             <label for="telefono" class="font-semibold text-sm px-3">Telefono</label>
                             <h:message for="telefono" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese telefono" value="#{registroClient.objCliente.telefono}" html5:placeholder="Ingresa tu Telefono" id="telefono" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese telefono" value="#{registroView.objcliente.telefono}" html5:placeholder="Ingresa tu Telefono" id="telefono" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                             <label for="Eps" class="font-semibold text-sm px-3">Eps</label>
                             <h:message for="Eps" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese Eps" value="#{registroClient.objCliente.eps}" html5:placeholder="Ingresa tu Eps" id="Eps" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese Eps" value="#{registroView.objcliente.eps}" html5:placeholder="Ingresa tu Eps" id="Eps" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                         </div>
                         <div class="flex flex-col ">
                             <label for="RH" class="font-semibold text-sm px-3">Rh</label>
                             <h:message for="RH" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese RH" value="#{registroClient.objCliente.rh}" html5:placeholder="Ingresa tu RH" id="RH" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese RH" value="#{registroView.objcliente.rh}" html5:placeholder="Ingresa tu RH" id="RH" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                             <label for="Nacimiento" class="font-semibold text-sm px-3">Fecha de Nacimiento</label>
                             <h:message for="Nacimiento" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese Fecha Nacimiento" value="#{registroClient.objCliente.fechaNacimiento}" html5:placeholder="DD/MM/AA" id="Nacimiento" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
-                            <label for="Direccion" class="font-semibold text-sm px-3">Direccion</label>
-                            <h:message for="Direccion" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese direccion" value="#{registroClient.objCliente.direccion}" html5:placeholder="Ingresa tu Direccion" id="Direccion" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese Fecha Nacimiento" value="#{registroView.objcliente.fechaNacimiento}" html5:placeholder="DD/MM/AA" id="Nacimiento" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                             <label for="Acudiente" class="font-semibold text-sm px-3">Acudiente</label>
                             <h:message for="Acudiente" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese Acudiente" value="#{registroClient.objCliente.nombreAcudiente}" html5:placeholder="Ingresa Nombre Acudiente" id="Acudiente" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese Acudiente" value="#{registroView.objcliente.nombreAcudiente}" html5:placeholder="Ingresa Nombre Acudiente" id="Acudiente" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                             <label for="telefonoAcudiente" class="font-semibold text-sm px-3">Telefono acudiente</label>
                             <h:message for="telefonoAcudiente" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese telefono acudiente" value="#{registroClient.objCliente.telefonoAcudiente}" html5:placeholder="Ingresa telefono Acudiente" id="telefonoAcudiente" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese telefono acudiente" value="#{registroView.objcliente.telefonoAcudiente}" html5:placeholder="Ingresa telefono Acudiente" id="telefonoAcudiente" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                             <label for="Correo" class="font-semibold text-sm px-3">Correo</label>
                             <h:message for="Correo" style="color:red"></h:message>
-                            <h:inputText required="true" requiredMessage="Ingrese correo" value="#{registroClient.objCliente.correo}" html5:placeholder="Ingresa tu Correo" id="Correo" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
+                            <h:inputText required="true" requiredMessage="Ingrese correo" value="#{registroView.objcliente.correo}" html5:placeholder="Ingresa tu Correo" id="Correo" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputText>
                             <label for="Contraseña" class="font-semibold text-sm px-3">Contraseña</label>
                             <h:message for="Contraseña" style="color:red"></h:message>
-                            <h:inputSecret required="true" requiredMessage="Ingrese contraseña" value="#{registroClient.objCliente.contrasenia}" html5:placeholder="Ingresa una Contraseña" id="Contraseña" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputSecret>
+                            <h:inputSecret required="true" requiredMessage="Ingrese contraseña" value="#{registroView.objcliente.contrasenia}" html5:placeholder="Ingresa una Contraseña" id="Contraseña" class="p-1 m-1 mx-4 outline-none border border-purple-400 rounded-sm"></h:inputSecret>
                         </div>
                     </div>
-                    <h:commandButton class="p-1 bg-purple-600 text-white hover:bg-yellow-600 cursor-pointer focus:outline-white rounded-sm m-2 shadow-lg" action="#{registroClient.registrarClient()}" value="Enviar"></h:commandButton>
+                    <h:commandButton class="p-1 bg-purple-600 text-white hover:bg-yellow-600 cursor-pointer focus:outline-white rounded-sm m-2 shadow-lg" action="#{registroView.registrocliente()}" value="Enviar"></h:commandButton>
                 </div>
             </div>
         </h:form>
     </h:body>
 </html>
-
 

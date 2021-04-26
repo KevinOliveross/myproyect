@@ -30,7 +30,6 @@ public class InstructorFacade extends AbstractFacade<Instructor> implements Inst
         super(Instructor.class);
     }
     
-    @Override
           public Instructor validarInstructor( String emailInstruc, String passwordInstruc){
         
         try{
@@ -45,4 +44,5 @@ public class InstructorFacade extends AbstractFacade<Instructor> implements Inst
         }
     
     }
+    
 }

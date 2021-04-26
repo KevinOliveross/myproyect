@@ -8,11 +8,10 @@ package edu.app.entities;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,51 +28,48 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Ordencompra.findAll", query = "SELECT o FROM Ordencompra o")
     , @NamedQuery(name = "Ordencompra.findByCantidad", query = "SELECT o FROM Ordencompra o WHERE o.cantidad = :cantidad")
-    , @NamedQuery(name = "Ordencompra.findByIdOrdenCompra", query = "SELECT o FROM Ordencompra o WHERE o.ordencompraPK.idOrdenCompra = :idOrdenCompra")
-    , @NamedQuery(name = "Ordencompra.findByClienteId", query = "SELECT o FROM Ordencompra o WHERE o.ordencompraPK.clienteId = :clienteId")
-    , @NamedQuery(name = "Ordencompra.findByRecepcionistaId", query = "SELECT o FROM Ordencompra o WHERE o.ordencompraPK.recepcionistaId = :recepcionistaId")
-    , @NamedQuery(name = "Ordencompra.findByProductoIdproducto", query = "SELECT o FROM Ordencompra o WHERE o.ordencompraPK.productoIdproducto = :productoIdproducto")})
+    , @NamedQuery(name = "Ordencompra.findByIdOrdenCompra", query = "SELECT o FROM Ordencompra o WHERE o.idOrdenCompra = :idOrdenCompra")
+    , @NamedQuery(name = "Ordencompra.findByClienteId", query = "SELECT o FROM Ordencompra o WHERE o.clienteId = :clienteId")
+    , @NamedQuery(name = "Ordencompra.findByRecepcionistaId", query = "SELECT o FROM Ordencompra o WHERE o.recepcionistaId = :recepcionistaId")
+    , @NamedQuery(name = "Ordencompra.findByProductoIdproducto", query = "SELECT o FROM Ordencompra o WHERE o.productoIdproducto = :productoIdproducto")})
 public class Ordencompra implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected OrdencompraPK ordencompraPK;
     @Basic(optional = false)
     @NotNull
     @Column(name = "cantidad")
     private int cantidad;
-    @JoinColumn(name = "cliente_id", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cliente cliente;
-    @JoinColumn(name = "producto_idproducto", referencedColumnName = "idproducto", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Producto producto;
-    @JoinColumn(name = "recepcionista_id", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Recepcionista recepcionista;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idOrdenCompra")
+    private Integer idOrdenCompra;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "cliente_id")
+    private int clienteId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "recepcionista_id")
+    private int recepcionistaId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "producto_idproducto")
+    private int productoIdproducto;
 
     public Ordencompra() {
     }
 
-    public Ordencompra(OrdencompraPK ordencompraPK) {
-        this.ordencompraPK = ordencompraPK;
+    public Ordencompra(Integer idOrdenCompra) {
+        this.idOrdenCompra = idOrdenCompra;
     }
 
-    public Ordencompra(OrdencompraPK ordencompraPK, int cantidad) {
-        this.ordencompraPK = ordencompraPK;
+    public Ordencompra(Integer idOrdenCompra, int cantidad, int clienteId, int recepcionistaId, int productoIdproducto) {
+        this.idOrdenCompra = idOrdenCompra;
         this.cantidad = cantidad;
-    }
-
-    public Ordencompra(int idOrdenCompra, int clienteId, int recepcionistaId, int productoIdproducto) {
-        this.ordencompraPK = new OrdencompraPK(idOrdenCompra, clienteId, recepcionistaId, productoIdproducto);
-    }
-
-    public OrdencompraPK getOrdencompraPK() {
-        return ordencompraPK;
-    }
-
-    public void setOrdencompraPK(OrdencompraPK ordencompraPK) {
-        this.ordencompraPK = ordencompraPK;
+        this.clienteId = clienteId;
+        this.recepcionistaId = recepcionistaId;
+        this.productoIdproducto = productoIdproducto;
     }
 
     public int getCantidad() {
@@ -84,34 +80,42 @@ public class Ordencompra implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Integer getIdOrdenCompra() {
+        return idOrdenCompra;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setIdOrdenCompra(Integer idOrdenCompra) {
+        this.idOrdenCompra = idOrdenCompra;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public int getClienteId() {
+        return clienteId;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
     }
 
-    public Recepcionista getRecepcionista() {
-        return recepcionista;
+    public int getRecepcionistaId() {
+        return recepcionistaId;
     }
 
-    public void setRecepcionista(Recepcionista recepcionista) {
-        this.recepcionista = recepcionista;
+    public void setRecepcionistaId(int recepcionistaId) {
+        this.recepcionistaId = recepcionistaId;
+    }
+
+    public int getProductoIdproducto() {
+        return productoIdproducto;
+    }
+
+    public void setProductoIdproducto(int productoIdproducto) {
+        this.productoIdproducto = productoIdproducto;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (ordencompraPK != null ? ordencompraPK.hashCode() : 0);
+        hash += (idOrdenCompra != null ? idOrdenCompra.hashCode() : 0);
         return hash;
     }
 
@@ -122,7 +126,7 @@ public class Ordencompra implements Serializable {
             return false;
         }
         Ordencompra other = (Ordencompra) object;
-        if ((this.ordencompraPK == null && other.ordencompraPK != null) || (this.ordencompraPK != null && !this.ordencompraPK.equals(other.ordencompraPK))) {
+        if ((this.idOrdenCompra == null && other.idOrdenCompra != null) || (this.idOrdenCompra != null && !this.idOrdenCompra.equals(other.idOrdenCompra))) {
             return false;
         }
         return true;
@@ -130,7 +134,7 @@ public class Ordencompra implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.app.entities.Ordencompra[ ordencompraPK=" + ordencompraPK + " ]";
+        return "edu.app.entities.Ordencompra[ idOrdenCompra=" + idOrdenCompra + " ]";
     }
     
 }

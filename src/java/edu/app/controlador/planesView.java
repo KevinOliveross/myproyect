@@ -8,7 +8,7 @@ package edu.app.controlador;
 import edu.app.entities.Cliente;
 import edu.app.entities.Instructor;
 import edu.app.entities.Plannutricional;
-import edu.app.entities.PlannutricionalPK;
+
 import edu.app.facade.ClienteFacadeLocal;
 import edu.app.facade.PlannutricionalFacadeLocal;
 import java.io.Serializable;
@@ -37,12 +37,11 @@ public class planesView implements Serializable {
     private Plannutricional obDiaPlan;
     private Cliente objCliente;
     private Instructor objInstructor;
- private int objId; 
+    private int objId;
     private String tipoMensajeR = "";
     private ArrayList<Plannutricional> listPlanesNutri = new ArrayList<>();
     private int idCliente = 1000;
     private int idInst = 1000;
-    private PlannutricionalPK objplanPK;
 
     @EJB
 
@@ -51,29 +50,19 @@ public class planesView implements Serializable {
 
     @PostConstruct
     public void init() {
-           
-            
         
-        obDiaPlan = new Plannutricional();
-        objplanPK = new PlannutricionalPK();
-        objplanPK.setClienteId(idCliente);
-        objplanPK.setInstructorId(objId);
         listPlanesNutri.addAll(PlannutricionalFacadeLocal.findAll());
-        
-       
-        
 
     }
 
     public void crearPlan() {
         try {
-            
-            
-            PlannutricionalFacadeLocal.create(obDiaPlan);
-            PlannutricionalFacadeLocal.create(objplanPK);
+           obDiaPlan = new Plannutricional();
            
+            PlannutricionalFacadeLocal.create(obDiaPlan);
+
             tipoMensajeR = "planCreada";
-            
+
             FacesContext fc = FacesContext.getCurrentInstance();
             fc.getExternalContext().redirect("../../instructor/planes/index.xhtml");
 
@@ -135,16 +124,6 @@ public class planesView implements Serializable {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
-
-    public PlannutricionalPK getObjplanPK() {
-        return objplanPK;
-    }
-
-    public void setObjplanPK(PlannutricionalPK objplanPK) {
-        this.objplanPK = objplanPK;
-    }
-
-  
 
     public int getIdInst() {
         return idInst;

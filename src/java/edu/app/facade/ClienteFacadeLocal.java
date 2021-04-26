@@ -30,6 +30,10 @@ public interface ClienteFacadeLocal {
 
     int count();
 
+    public Cliente verificacion(String correoin, String clavein);
+
+    public Cliente getCorreo(String correoin);
+
     public Cliente validarCliente(String emailIn, String passwordIn);
     
 }

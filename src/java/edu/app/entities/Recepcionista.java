@@ -6,21 +6,16 @@
 package edu.app.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -98,8 +93,6 @@ public class Recepcionista implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "contrasenia")
     private String contrasenia;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recepcionista", fetch = FetchType.LAZY)
-    private Collection<Ordencompra> ordencompraCollection;
 
     public Recepcionista() {
     }
@@ -208,15 +201,6 @@ public class Recepcionista implements Serializable {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
-    }
-
-    @XmlTransient
-    public Collection<Ordencompra> getOrdencompraCollection() {
-        return ordencompraCollection;
-    }
-
-    public void setOrdencompraCollection(Collection<Ordencompra> ordencompraCollection) {
-        this.ordencompraCollection = ordencompraCollection;
     }
 
     @Override

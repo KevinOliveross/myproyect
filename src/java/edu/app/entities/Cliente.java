@@ -6,21 +6,16 @@
 package edu.app.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -111,12 +106,6 @@ public class Cliente implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "contrasenia")
     private String contrasenia;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
-    private Collection<Ordencompra> ordencompraCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
-    private Collection<Rutina> rutinaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
-    private Collection<Plannutricional> plannutricionalCollection;
 
     public Cliente() {
     }
@@ -140,6 +129,7 @@ public class Cliente implements Serializable {
         this.telefonoAcudiente = telefonoAcudiente;
         this.contrasenia = contrasenia;
     }
+
 
     public Integer getId() {
         return id;
@@ -243,33 +233,6 @@ public class Cliente implements Serializable {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
-    }
-
-    @XmlTransient
-    public Collection<Ordencompra> getOrdencompraCollection() {
-        return ordencompraCollection;
-    }
-
-    public void setOrdencompraCollection(Collection<Ordencompra> ordencompraCollection) {
-        this.ordencompraCollection = ordencompraCollection;
-    }
-
-    @XmlTransient
-    public Collection<Rutina> getRutinaCollection() {
-        return rutinaCollection;
-    }
-
-    public void setRutinaCollection(Collection<Rutina> rutinaCollection) {
-        this.rutinaCollection = rutinaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Plannutricional> getPlannutricionalCollection() {
-        return plannutricionalCollection;
-    }
-
-    public void setPlannutricionalCollection(Collection<Plannutricional> plannutricionalCollection) {
-        this.plannutricionalCollection = plannutricionalCollection;
     }
 
     @Override

@@ -8,11 +8,10 @@ package edu.app.entities;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,18 +28,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Rutina.findAll", query = "SELECT r FROM Rutina r")
-    , @NamedQuery(name = "Rutina.findByIdrutina", query = "SELECT r FROM Rutina r WHERE r.rutinaPK.idrutina = :idrutina")
+    , @NamedQuery(name = "Rutina.findByIdrutina", query = "SELECT r FROM Rutina r WHERE r.idrutina = :idrutina")
     , @NamedQuery(name = "Rutina.findByTemaRutina", query = "SELECT r FROM Rutina r WHERE r.temaRutina = :temaRutina")
     , @NamedQuery(name = "Rutina.findByMusculo", query = "SELECT r FROM Rutina r WHERE r.musculo = :musculo")
     , @NamedQuery(name = "Rutina.findByRepeticiones", query = "SELECT r FROM Rutina r WHERE r.repeticiones = :repeticiones")
     , @NamedQuery(name = "Rutina.findByMaquina", query = "SELECT r FROM Rutina r WHERE r.maquina = :maquina")
-    , @NamedQuery(name = "Rutina.findByInstructorId", query = "SELECT r FROM Rutina r WHERE r.rutinaPK.instructorId = :instructorId")
-    , @NamedQuery(name = "Rutina.findByClienteId", query = "SELECT r FROM Rutina r WHERE r.rutinaPK.clienteId = :clienteId")})
+    , @NamedQuery(name = "Rutina.findByInstructorId", query = "SELECT r FROM Rutina r WHERE r.instructorId = :instructorId")
+    , @NamedQuery(name = "Rutina.findByClienteId", query = "SELECT r FROM Rutina r WHERE r.clienteId = :clienteId")})
 public class Rutina implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected RutinaPK rutinaPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idrutina")
+    private Integer idrutina;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -61,38 +63,38 @@ public class Rutina implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "maquina")
     private String maquina;
-    @JoinColumn(name = "cliente_id", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cliente cliente;
-    @JoinColumn(name = "instructor_id", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Instructor instructor;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "instructor_id")
+    private int instructorId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "cliente_id")
+    private int clienteId;
 
     public Rutina() {
     }
 
-    public Rutina(RutinaPK rutinaPK) {
-        this.rutinaPK = rutinaPK;
+    public Rutina(Integer idrutina) {
+        this.idrutina = idrutina;
     }
 
-    public Rutina(RutinaPK rutinaPK, String temaRutina, String musculo, String repeticiones, String maquina) {
-        this.rutinaPK = rutinaPK;
+    public Rutina(Integer idrutina, String temaRutina, String musculo, String repeticiones, String maquina, int instructorId, int clienteId) {
+        this.idrutina = idrutina;
         this.temaRutina = temaRutina;
         this.musculo = musculo;
         this.repeticiones = repeticiones;
         this.maquina = maquina;
+        this.instructorId = instructorId;
+        this.clienteId = clienteId;
     }
 
-    public Rutina(int idrutina, int instructorId, int clienteId) {
-        this.rutinaPK = new RutinaPK(idrutina, instructorId, clienteId);
+    public Integer getIdrutina() {
+        return idrutina;
     }
 
-    public RutinaPK getRutinaPK() {
-        return rutinaPK;
-    }
-
-    public void setRutinaPK(RutinaPK rutinaPK) {
-        this.rutinaPK = rutinaPK;
+    public void setIdrutina(Integer idrutina) {
+        this.idrutina = idrutina;
     }
 
     public String getTemaRutina() {
@@ -127,26 +129,26 @@ public class Rutina implements Serializable {
         this.maquina = maquina;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getInstructorId() {
+        return instructorId;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setInstructorId(int instructorId) {
+        this.instructorId = instructorId;
     }
 
-    public Instructor getInstructor() {
-        return instructor;
+    public int getClienteId() {
+        return clienteId;
     }
 
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (rutinaPK != null ? rutinaPK.hashCode() : 0);
+        hash += (idrutina != null ? idrutina.hashCode() : 0);
         return hash;
     }
 
@@ -157,7 +159,7 @@ public class Rutina implements Serializable {
             return false;
         }
         Rutina other = (Rutina) object;
-        if ((this.rutinaPK == null && other.rutinaPK != null) || (this.rutinaPK != null && !this.rutinaPK.equals(other.rutinaPK))) {
+        if ((this.idrutina == null && other.idrutina != null) || (this.idrutina != null && !this.idrutina.equals(other.idrutina))) {
             return false;
         }
         return true;
@@ -165,7 +167,7 @@ public class Rutina implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.app.entities.Rutina[ rutinaPK=" + rutinaPK + " ]";
+        return "edu.app.entities.Rutina[ idrutina=" + idrutina + " ]";
     }
     
 }

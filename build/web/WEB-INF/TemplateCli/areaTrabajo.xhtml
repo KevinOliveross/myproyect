@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition>
+
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <h3 class="page-title">
+                        <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                            <i class="mdi mdi-home"></i>
+                        </span> ${modulo}</h3>
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page">
+                                <span></span>Inicio<i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-danger card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="#{request.contextPath}/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                                <h4 class="font-weight-normal mb-3">Tu Plan <i class="mdi mdi mdi-cart-outline mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">650.000</h2>
+                                <h6 class="card-text">6 MESES</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-info card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="#{request.contextPath}/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                                <h4 class="font-weight-normal mb-3">Entrenador Personal<i class="mdi mdi mdi-heart-pulse mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">kevin Torres</h2>
+                                <h6 class="card-text"> NUMERO : 3020384321</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Productos Adqueridos</h4>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th> Producto </th>
+                                                <th> Estado </th>
+                                                <th> Fecha </th>
+                                                <th> ID Compra</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Proteina (Bi Pro)</td>
+                                                <td>
+                                                    <label class="badge badge-gradient-success">Comprado</label>
+                                                </td>
+                                                <td> Nov 7, 2020 </td>
+                                                <td> 12453 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Creatina (Met-Rx)</td>
+                                                <td>
+                                                    <label class="badge badge-gradient-success">Comprado</label>
+                                                </td>
+                                                <td> Ene 20, 2020 </td>
+                                                <td> 38457</td>
+                                            </tr>
+                                            <tr>
+                                                <td> Mancuerdas (Proiron)</td>
+                                                <td>
+                                                    <label class="badge badge-gradient-info">Encargo (En Espera)</label>
+                                                </td>
+                                                <td> Jul 1, 2020 </td>
+                                                <td> 70946 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Barras Energeticas (Power Bar)</td>
+                                                <td>
+                                                    <label class="badge badge-gradient-danger">No Comprado</label>
+                                                </td>
+                                                <td> Ago 13, 2020 </td>
+                                                <td> - </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 . All rights reserved. GAES 1 - 2025329</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">PeopleGym56 <i class="mdi mdi-heart text-danger"></i></span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+
+    </ui:composition>
+</html>
+
