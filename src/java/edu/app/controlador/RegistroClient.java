@@ -65,29 +65,7 @@ public class RegistroClient implements Serializable {
 
     }
 
-  
-    public void validarInstruct() {
 
-        try {
-
-            Instructor instructLog = instructorFacadeLocal.validarInstructor(emailInstruc, passwordInstruc);
-           
-            if (instructLog.getId() != null) {
-                FacesContext fc = FacesContext.getCurrentInstance();
-                fc.getExternalContext().redirect("../instructor/index.xhtml");
-
-            }
-              else {
-                tipoMensaje = "no_L";
-            }
-
-        } catch (Exception e) {
-            tipoMensaje = "no_L";
-
-        }
-
-    }
-    
 
 
     public String getTipoMensaje() {

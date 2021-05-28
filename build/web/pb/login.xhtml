@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -39,6 +40,7 @@
                             <h1 class="text-sm font-semibold p-2 text-center">Datos Incorrectos</h1>
                         </div>
                     </c:if>
+
                     <h:message for="correo" style="color:red"></h:message>
                     <h:inputText id="correo" required="true" requiredMessage="Ingrese Correo" value="#{loginView.correoin}" class="w-3/4 p-2 my-2 rounded-md font-light focus:outline-none border-2 placeholder-black border-purple-600"  html5:placeholder="Email"></h:inputText>
                     <h:message for="clave" style="color:red"></h:message>
@@ -46,8 +48,18 @@
                     <div class="my-6  flex justify-evenly w-80 ">
                         <a href="recuperarpassword.xhtml" class="p-2  text-sm cursor-pointer">Forget Password?</a>
                         <h:commandButton class="p-2 w-24 text-lg bg-yellow-500 rounded-md font-semibold cursor-pointer" action="#{loginView.validarcliente()}" value="Log in"></h:commandButton>
+                   
                     </div>
+                      <div class="grid grid-cols-3 gap-4">
+                          <div class="..." style="margin-left: 50px;">  <a class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" href="loginInstructor.xhtml">Instructor</a>
+                        </div>
+                          <div class="..." style="margin-left: 40px;"> <a class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" href="loginRecepcionista.xhtml">Recepcionista</a>
+                        </div>
+
+                    </div>
+                  
                 </div>   
+
             </div>
         </h:form>     
     </h:body>

@@ -169,5 +169,6 @@ public class Rutina implements Serializable {
     public String toString() {
         return "edu.app.entities.Rutina[ idrutina=" + idrutina + " ]";
     }
-    
+
+
 }

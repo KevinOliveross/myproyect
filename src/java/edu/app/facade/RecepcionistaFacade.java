@@ -9,6 +9,7 @@ import edu.app.entities.Recepcionista;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +29,21 @@ public class RecepcionistaFacade extends AbstractFacade<Recepcionista> implement
     public RecepcionistaFacade() {
         super(Recepcionista.class);
     }
-    
+
+    public Recepcionista validarRece(String emailRecep, String passwordRecep) {
+
+        try {
+
+            Query consulta = em.createQuery("SELECT c FROM Recepcionista c WHERE c.contrasenia = :passwordRecep AND c.correo = :emailRecep");
+            consulta.setParameter("passwordRecep", passwordRecep);
+            consulta.setParameter("emailRecep", emailRecep);
+            return (Recepcionista) consulta.getSingleResult();
+
+        } catch (Exception e) {
+            System.out.println("El error en la validacion " + e.getMessage());
+            return new Recepcionista();
+        }
+
+    }
+
 }

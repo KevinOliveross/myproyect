@@ -30,6 +30,8 @@ public interface InstructorFacadeLocal {
 
     int count();
 
-    public Instructor validarInstructor(String emailInstruc, String passwordInstruc);
+    public Instructor validarIns(String emailInstruc, String passwordInstruc);
+
+
     
 }

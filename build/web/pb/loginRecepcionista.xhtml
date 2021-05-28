@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,10 +19,6 @@
                     <a class="cursor-pointer" href="../index.xhtml"><img src="#{request.contextPath}/fotos/logo.png" alt="Logo"/></a>
                 </div>
                 <ul class="flex w-1/2 justify-evenly items-center">
-                    <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a href="">About
-                            Us</a></li>
-                    <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a
-                            href="">Quote</a></li>
                     <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a
                             href="">Contact Us</a></li>
                     <li class="font-semibold  text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a href="login.xhtml">Sign
@@ -37,26 +34,22 @@
                     <img class="rounded-sm" src="#{request.contextPath}/fotos/recuperarprinci.jpg" alt="imagenlogin"/>
                 </div>
                 <div class="bg-white w-1/4 flex flex-col items-center bg-opacity-70 rounded-lg">
-                    <h3 class="text-3xl text-center font-semibold my-14">Welcome Recepcionist!</h3>
-                    <c:if test="#{registroClient.tipoMensaje.equals('no_L')}"> 
+                    <h3 class="text-3xl text-center font-semibold my-14">Welcome !</h3>
+                    <c:if test="#{loginView.mensaje.equalsIgnoreCase('No,login')}">
                         <div class="bg-red-600 mx-4 my-2 rounded-sm">
                             <h1 class="text-sm font-semibold p-2 text-center">Datos Incorrectos</h1>
                         </div>
                     </c:if>
+                   
                     <h:message for="correo" style="color:red"></h:message>
-                    <h:inputText id="correo" required="true" requiredMessage="Ingrese Correo" value="#{registroClient.emailRecep}" class="w-3/4 p-2 my-2 rounded-md font-light focus:outline-none border-2 placeholder-black border-purple-600"  html5:placeholder="Email"></h:inputText>
+                    <h:inputText id="correo" required="true" requiredMessage="Ingrese Correo" value="#{loginView.emailRecep}" class="w-3/4 p-2 my-2 rounded-md font-light focus:outline-none border-2 placeholder-black border-purple-600"  html5:placeholder="Email"></h:inputText>
                     <h:message for="clave" style="color:red"></h:message>
-                    <h:inputSecret id="clave" required="true" requiredMessage="Ingrese Clave" value="#{registroClient.passwordRecep}" class="w-3/4 p-2 my-2 rounded-md font-light focus:outline-none border-2 placeholder-black border-purple-600" html5:placeholder="Password"></h:inputSecret> 
+                    <h:inputSecret id="clave" required="true" requiredMessage="Ingrese Clave" value="#{loginView.passwordRecep}" class="w-3/4 p-2 my-2 rounded-md font-light focus:outline-none border-2 placeholder-black border-purple-600" html5:placeholder="Password"></h:inputSecret> 
                     <div class="my-6  flex justify-evenly w-80 ">
                         <a href="recuperarpassword.xhtml" class="p-2  text-sm cursor-pointer">Forget Password?</a>
-                        <h:commandButton class="p-2 w-24 text-lg bg-yellow-500 rounded-md font-semibold cursor-pointer" action="#{registroClient.validarRecep()}" value="Log in"></h:commandButton>
+                        <h:commandButton class="p-2 w-24 text-lg bg-yellow-500 rounded-md font-semibold cursor-pointer" action="#{loginView.loginRecepcionista()}" value="Log in"></h:commandButton>
                     </div>
-                    <a href="login.xhtml" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Are you not Recepnionist?</a>
-
-                    <a href="registrocli.xhtml" class="p-2  text-sm cursor-pointer font-semibold my-5">REGISTER NOW</a>
-                    
                 </div>   
-                
             </div>
         </h:form>     
     </h:body>

@@ -44,6 +44,7 @@ public class ClienteFacade extends AbstractFacade<Cliente> implements ClienteFac
         }
     }  
     
+    @Override
     public Cliente getCorreo(String correoin){
         try{
             Query peticion = em.createQuery("SELECT c FROM Cliente c WHERE c.correo = :correoin");
@@ -56,6 +57,7 @@ public class ClienteFacade extends AbstractFacade<Cliente> implements ClienteFac
     }
     
           
+    @Override
           public Cliente validarCliente( String emailIn, String passwordIn){
         
         try{

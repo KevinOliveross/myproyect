@@ -54,6 +54,7 @@ public class rutinasView implements Serializable {
     @PostConstruct
     public void init() {
        
+        
         listRutinas.addAll(RutinaFacadeLocal.findAll());
 
     }

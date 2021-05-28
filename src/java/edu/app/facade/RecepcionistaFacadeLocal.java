@@ -29,5 +29,8 @@ public interface RecepcionistaFacadeLocal {
     List<Recepcionista> findRange(int[] range);
 
     int count();
-    
+
+    public Recepcionista validarRece(String emailRecep, String passwordRecep);
+
+  
 }

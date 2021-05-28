@@ -62,8 +62,8 @@ public class recuperarpswView implements Serializable {
                 userFound.setContrasenia(nuevaPassword);
                 clientefacadelocal.edit(userFound);
                 System.out.println("Cliente " + userFound.getId() + "Actualizado!");
-                String correoEnvia = "peoplegym56r@gmail.com";
-                String contrasenia = "Neverbroke1212";
+                String correoEnvia = "ketotorres2020@gmail.com";
+                String contrasenia = "Ke24112000";
                 String destinatario = correoin;
                 String asunto = "Recuperar contraseña";
                 String anuncio = "Tu codigo para recuperar tu contraseña : " + this.nuevaPassword;

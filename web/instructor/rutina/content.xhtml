@@ -57,6 +57,56 @@
                                     Assign Routines
                                 </button>
 
+                                <h:form>
+
+
+                                    <div class="form-group">
+
+                                        <label for="idinst" style="font-weight: bold; font-size: 20px; color: black;"> Id de Instructor</label>
+                                        <h:inputText  required="true" requiredMessage="Ingresa el id del Instructor" value="#{rutinasyplancreateView.objRutinas.instructorId}" class="form-control" id="idinst" html5:placeholder="El id del instructor" style="border: 2px solid black;"> </h:inputText>
+
+                                    </div> 
+
+
+                                    <div class="form-group">
+
+                                        <label for="idclienter" style="font-weight: bold; font-size: 20px; color: black;"> Id de Cliente</label>
+                                        <h:inputText  required="true" requiredMessage="Ingresa el id del cliente" value="#{rutinasyplancreateView.objRutinas.clienteId}" class="form-control" id="idclienter" html5:placeholder="El id del cliente" style="border: 2px solid black;"> </h:inputText>
+
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label for="temamusc" style="font-weight: bold; font-size: 20px; color: black;">Tema Muscular</label>
+                                        <h:inputText required="true" requiredMessage="Ingresa el tema muscular" value="#{rutinasyplancreateView.objRutinas.temaRutina}" class="form-control" id="temamusc" html5:placeholder="Tema Muscular" style="border: 2px solid black;"> </h:inputText>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="repeticiones" style="font-weight: bold; font-size: 20px; color: black;">repeticiones</label>
+                                        <h:inputText required="true" requiredMessage="Ingresa las repeticiones" value="#{rutinasyplancreateView.objRutinas.repeticiones}" class="form-control" id="repeticiones" html5:placeholder="Repeticiones" style="border: 2px solid black;"> </h:inputText>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label for="musculos" style="font-weight: bold; font-size: 20px; color: black;"> Musculo</label>
+                                        <h:inputText required="true" requiredMessage="Ingresa el musculo" value="#{rutinasyplancreateView.objRutinas.musculo}" class="form-control" id="musculos" html5:placeholder="Musculo" style="border: 2px solid black;"> </h:inputText>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="maquinas" style="font-weight: bold; font-size: 20px; color: black;">Maquina</label>
+                                        <h:inputText required="true" requiredMessage="Ingresa la maquina" value="#{rutinasyplancreateView.objRutinas.maquina}" class="form-control" id="maquinas" html5:placeholder="Maquina" style="border: 2px solid black;"> </h:inputText>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <h:commandButton  action="#{rutinasyplancreateView.crearRutina()}" value="Crear Rutina" class="btn btn-warning" style="border: 3px solid black; font-weight: bold; font-size: 20px; color: black;"></h:commandButton>
+                                    </div>
+
+
+                                </h:form>
+
 
                                 <a class="btn btn-info" href="index.xhtml" role="button" style="margin-bottom: 20px; font-weight: bold; font-size: 20px;">Update</a>
 
@@ -107,10 +157,10 @@
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
-                                                        <c:forEach items="#{rutinasView.listRutinas}" var="listRutinas">
+                                                        <c:forEach items="#{rutinasyplancreateView.listaRutinas}" var="listRutinas">
                                                             <tr>
-                                                                <td>#{listRutinas.rutinaPK.clienteId}</td>
-                                                                <td>#{listRutinas.rutinaPK.idrutina}</td>
+                                                                <td>#{listRutinas.clienteId}</td>
+                                                                <td>#{listRutinas.idrutina}</td>
                                                                 <td>#{listRutinas.temaRutina}</td>
 
 
@@ -120,7 +170,7 @@
                                                                 <td>#{listRutinas.maquina}</td> 
 
                                                                 <td>  
-                                                                    <h:commandButton action="#{rutinasView.eliminarRutina(listRutinas)}" value="Delete" class="btn btn-danger btn-fw" style="height: 50px; font-weight: bold; font-size: 20px;"></h:commandButton>
+                                                                    <h:commandButton action="#{rutinasyplancreateView.eliminarRutina(listRutinas)}" value="Delete" class="btn btn-danger btn-fw" style="height: 50px; font-weight: bold; font-size: 20px;"></h:commandButton>
 
                                                                 </td>  
 
@@ -173,7 +223,7 @@
                             <div class="form-group">
 
                                 <label for="idinst" style="font-weight: bold; font-size: 20px; color: black;"> Id de Instructor</label>
-                                <h:inputText  required="true" requiredMessage="Ingresa el id del Instructor" value="#{rutinasView.objRutina.rutinaPK.instructorId}" class="form-control" id="idinst" html5:placeholder="El id del instructor" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del Instructor" value="#{rutinasyplancreateView.objRutinas.instructorId}" class="form-control" id="idinst" html5:placeholder="El id del instructor" style="border: 2px solid black;"> </h:inputText>
 
                             </div> 
 
@@ -181,47 +231,38 @@
                             <div class="form-group">
 
                                 <label for="idclienter" style="font-weight: bold; font-size: 20px; color: black;"> Id de Cliente</label>
-                                <h:inputText  required="true" requiredMessage="Ingresa el id del cliente" value="#{rutinasView.objRutina.rutinaPK.clienteId}" class="form-control" id="idclienter" html5:placeholder="El id del cliente" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del cliente" value="#{rutinasyplancreateView.objRutinas.clienteId}" class="form-control" id="idclienter" html5:placeholder="El id del cliente" style="border: 2px solid black;"> </h:inputText>
 
                             </div> 
-                            <!--
-                               <div class="form-group">
-   
-                                   <label for="idejer" style="font-weight: bold; font-size: 20px; color: black;"> id Rutina</label>
-                                   <h:inputText required="true" requiredMessage="Ingresa el id del ejercicio" value="#{rutinasView.objRutina.rutinaPK.idrutina}" class="form-control" id="idejer" html5:placeholder="El id del ejercicio" style="border: 2px solid black;"> </h:inputText>
-   
-                               </div>
-                            -->
-
 
                             <div class="form-group">
                                 <label for="temamusc" style="font-weight: bold; font-size: 20px; color: black;">Tema Muscular</label>
-                                <h:inputText required="true" requiredMessage="Ingresa el tema muscular" value="#{rutinasView.objRutina.temaRutina}" class="form-control" id="temamusc" html5:placeholder="Tema Muscular" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText required="true" requiredMessage="Ingresa el tema muscular" value="#{rutinasyplancreateView.objRutinas.temaRutina}" class="form-control" id="temamusc" html5:placeholder="Tema Muscular" style="border: 2px solid black;"> </h:inputText>
                             </div>
 
 
                             <div class="form-group">
                                 <label for="repeticiones" style="font-weight: bold; font-size: 20px; color: black;">repeticiones</label>
-                                <h:inputText required="true" requiredMessage="Ingresa las repeticiones" value="#{rutinasView.objRutina.repeticiones}" class="form-control" id="repeticiones" html5:placeholder="Repeticiones" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText required="true" requiredMessage="Ingresa las repeticiones" value="#{rutinasyplancreateView.objRutinas.repeticiones}" class="form-control" id="repeticiones" html5:placeholder="Repeticiones" style="border: 2px solid black;"> </h:inputText>
                             </div>
 
 
 
                             <div class="form-group">
-                                <label for="musculos" style="font-weight: bold; font-size: 20px; color: black;"> Msculo</label>
-                                <h:inputText required="true" requiredMessage="Ingresa el musculo" value="#{rutinasView.objRutina.musculo}" class="form-control" id="musculos" html5:placeholder="Musculo" style="border: 2px solid black;"> </h:inputText>
+                                <label for="musculos" style="font-weight: bold; font-size: 20px; color: black;"> Musculo</label>
+                                <h:inputText required="true" requiredMessage="Ingresa el musculo" value="#{rutinasyplancreateView.objRutinas.musculo}" class="form-control" id="musculos" html5:placeholder="Musculo" style="border: 2px solid black;"> </h:inputText>
                             </div>
 
                             <div class="form-group">
                                 <label for="maquinas" style="font-weight: bold; font-size: 20px; color: black;">Maquina</label>
-                                <h:inputText required="true" requiredMessage="Ingresa la maquina" value="#{rutinasView.objRutina.maquina}" class="form-control" id="maquinas" html5:placeholder="Maquina" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText required="true" requiredMessage="Ingresa la maquina" value="#{rutinasyplancreateView.objRutinas.maquina}" class="form-control" id="maquinas" html5:placeholder="Maquina" style="border: 2px solid black;"> </h:inputText>
                             </div>
 
 
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <h:commandButton  action="#{rutinasView.crearRutina()}" value="Crear Rutina" class="btn btn-warning" style="border: 3px solid black; font-weight: bold; font-size: 20px; color: black;"></h:commandButton>
+                            <h:commandButton  action="#{rutinasyplancreateView.crearRutina()}" value="Crear Rutina" class="btn btn-warning" style="border: 3px solid black; font-weight: bold; font-size: 20px; color: black;"></h:commandButton>
 
                         </div>
                     </div>
@@ -248,7 +289,7 @@
                             <div class="form-group">
 
                                 <label for="idclienter" style="font-weight: bold; font-size: 20px; color: black;"> id de cliente</label>
-                                <h:inputText  required="true" requiredMessage="Ingresa el id del cliente" value="#{rutinasView.objRutina.clienteId.id}" class="form-control" id="idclienter" html5:placeholder="El id del cliente" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id del cliente" value="#{rutinasyplancreateView.objRutinas.clienteId}" class="form-control" id="idclienter" html5:placeholder="El id del cliente" style="border: 2px solid black;"> </h:inputText>
 
                             </div>
 
@@ -256,7 +297,7 @@
                                 <label for="idruti" style="font-weight: bold; font-size: 20px; color: black;"> id de la rutina</label>
 
 
-                                <h:inputText  required="true" requiredMessage="Ingresa el id dela rutina" value="#{rutinasView.objRutina.idrutina}" class="form-control" id="idruti" html5:placeholder="El id dela rutina" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText  required="true" requiredMessage="Ingresa el id dela rutina" value="#{rutinasyplancreateView.objRutinas.idrutina}" class="form-control" id="idruti" html5:placeholder="El id dela rutina" style="border: 2px solid black;"> </h:inputText>
 
 
                             </div>
@@ -267,7 +308,7 @@
                             <div class="form-group">
                                 <label for="temamusc" style="font-weight: bold; font-size: 20px; color: black;">Tema Muscular</label> 
 
-                                <h:inputText required="true" requiredMessage="Ingresa el tema muscular" value="#{rutinasView.objRutina.temaRutina}" class="form-control" id="temamusc" html5:placeholder="Tema Muscular" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText required="true" requiredMessage="Ingresa el tema muscular" value="#{rutinasyplancreateView.objRutinas.temaRutina}" class="form-control" id="temamusc" html5:placeholder="Tema Muscular" style="border: 2px solid black;"> </h:inputText>
                             </div>
 
 
@@ -276,19 +317,19 @@
 
                             <div class="form-group">
                                 <label for="repeticiones" style="font-weight: bold; font-size: 20px; color: black;">repeticiones</label>
-                                <h:inputText required="true" requiredMessage="Ingresa las repeticiones" value="#{rutinasView.objRutina.repeticiones}" class="form-control" id="repeticiones" html5:placeholder="Repeticiones" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText required="true" requiredMessage="Ingresa las repeticiones" value="#{rutinasyplancreateView.objRutinas.repeticiones}" class="form-control" id="repeticiones" html5:placeholder="Repeticiones" style="border: 2px solid black;"> </h:inputText>
                             </div>
 
 
 
                             <div class="form-group">
                                 <label for="musculos" style="font-weight: bold; font-size: 20px; color: black;"> Musculo</label>
-                                <h:inputText required="true" requiredMessage="Ingresa el musculo" value="#{rutinasView.objRutina.musculo}" class="form-control" id="musculos" html5:placeholder="Musculo" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText required="true" requiredMessage="Ingresa el musculo" value="#{rutinasyplancreateView.objRutinas.musculo}" class="form-control" id="musculos" html5:placeholder="Musculo" style="border: 2px solid black;"> </h:inputText>
                             </div>
 
                             <div class="form-group">
                                 <label for="maquinas" style="font-weight: bold; font-size: 20px; color: black;">Nombre de la maquina</label>
-                                <h:inputText required="true" requiredMessage="Ingresa la maquina" value="#{rutinasView.objRutina.maquina}" class="form-control" id="maquinas" html5:placeholder="Maquina" style="border: 2px solid black;"> </h:inputText>
+                                <h:inputText required="true" requiredMessage="Ingresa la maquina" value="#{rutinasyplancreateView.objRutinas.maquina}" class="form-control" id="maquinas" html5:placeholder="Maquina" style="border: 2px solid black;"> </h:inputText>
                             </div>
 
 
