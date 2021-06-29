@@ -30,17 +30,16 @@ public class InstructorFacade extends AbstractFacade<Instructor> implements Inst
         super(Instructor.class);
     }
 
-    public Instructor validarIns(String emailInstruc, String passwordInstruc) {
-
+    @Override
+  public Instructor validarInstructor(String emailInstruc, String passwordInstruc) {
         try {
-            Query consulta = em.createQuery("SELECT c FROM Instructor c WHERE c.contrasenia = :passwordInstruc AND c.correo = :emailInstruc");
-            consulta.setParameter("passwordInstruc", passwordInstruc);
-            consulta.setParameter("emailInstruc", emailInstruc);
-            return (Instructor) consulta.getSingleResult();
-
+            Query qt = em.createQuery("SELECT i FROM Instructor i WHERE i.correo = :emailInstruc AND i.contrasenia = :passwordInstruc");
+            qt.setParameter("passwordInstruc", passwordInstruc);
+            qt.setParameter("emailInstruc", emailInstruc);
+            return (Instructor) qt.getSingleResult();
         } catch (Exception e) {
-            System.out.println("El error en la validacion " + e.getMessage());
-            return new Instructor();
+            System.out.println("edu.app.facade.ClienteFacade.validarCliente() " + e.getMessage());
+            return null;
         }
 
     }
