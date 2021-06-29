@@ -30,11 +30,12 @@ public class RecepcionistaFacade extends AbstractFacade<Recepcionista> implement
         super(Recepcionista.class);
     }
 
+    @Override
     public Recepcionista validarRece(String emailRecep, String passwordRecep) {
 
         try {
 
-            Query consulta = em.createQuery("SELECT c FROM Recepcionista c WHERE c.contrasenia = :passwordRecep AND c.correo = :emailRecep");
+            Query consulta = em.createQuery("SELECT r FROM Recepcionista r WHERE r.contrasenia = :passwordRecep AND r.correo = :emailRecep");
             consulta.setParameter("passwordRecep", passwordRecep);
             consulta.setParameter("emailRecep", emailRecep);
             return (Recepcionista) consulta.getSingleResult();

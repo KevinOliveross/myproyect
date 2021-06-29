@@ -32,7 +32,7 @@ public class rutinasyplancreateView implements Serializable {
     /**
      * Creates a new instance of rutinasCreate
      */
-    private Rutina objRutinas;
+    private Rutina objRutinas = new Rutina();
     private String mensajeAlert = "";
     private ArrayList<Rutina> listaRutinas = new ArrayList<>();
     private ArrayList<Plannutricional> listPlanesNutri = new ArrayList<>();
@@ -54,29 +54,21 @@ public class rutinasyplancreateView implements Serializable {
 
     @PostConstruct
     public void cargaRutinas() {
-        objRutinas = new Rutina();
-        objRutinas.setClienteId(idClie);
-        objRutinas.setInstructorId(idIns);
-
         listaRutinas.addAll(rutinaFacadeLocal.findAll());
-        
-
     }
 
     public void crearRutina() {
         try {
-
-            idIns = this.objidIns.getId();
-            idClie = this.objidClien.getId();
-
             rutinaFacadeLocal.create(objRutinas);
             tipoMensajeR = "rutinaCreada";
+            objRutinas = new Rutina();
             FacesContext fc = FacesContext.getCurrentInstance();
             fc.getExternalContext().redirect("../../instructor/rutina/index.xhtml");
 
         } catch (Exception e) {
             tipoMensajeR = "rutinaNoCreada";
             System.out.println("edu.app.controlador.InstructorvView.crearRutina()" + e.getMessage());
+            System.out.println("El IdCliente es -> " + idClie);
 
         }
 

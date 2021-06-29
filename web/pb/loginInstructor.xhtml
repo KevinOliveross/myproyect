@@ -42,12 +42,12 @@
                     </c:if>
                    
                     <h:message for="correo" style="color:red"></h:message>
-                    <h:inputText id="correo" required="true" requiredMessage="Ingrese Correo" value="#{loginView.emailInstruc}" class="w-3/4 p-2 my-2 rounded-md font-light focus:outline-none border-2 placeholder-black border-purple-600"  html5:placeholder="Email"></h:inputText>
+                    <h:inputText id="correo" required="true" requiredMessage="Ingrese Correo" value="#{loginViewInstruc.emailInstruc}" class="w-3/4 p-2 my-2 rounded-md font-light focus:outline-none border-2 placeholder-black border-purple-600"  html5:placeholder="Email"></h:inputText>
                     <h:message for="clave" style="color:red"></h:message>
-                    <h:inputSecret id="clave" required="true" requiredMessage="Ingrese Clave" value="#{loginView.passwordInstruc}" class="w-3/4 p-2 my-2 rounded-md font-light focus:outline-none border-2 placeholder-black border-purple-600" html5:placeholder="Password"></h:inputSecret> 
+                    <h:inputSecret id="clave" required="true" requiredMessage="Ingrese Clave" value="#{loginViewInstruc.passwordInstruc}" class="w-3/4 p-2 my-2 rounded-md font-light focus:outline-none border-2 placeholder-black border-purple-600" html5:placeholder="Password"></h:inputSecret> 
                     <div class="my-6  flex justify-evenly w-80 ">
                         <a href="recuperarpassword.xhtml" class="p-2  text-sm cursor-pointer">Forget Password?</a>
-                        <h:commandButton class="p-2 w-24 text-lg bg-yellow-500 rounded-md font-semibold cursor-pointer" action="#{loginView.loginInstructor()}" value="Log in"></h:commandButton>
+                        <h:commandButton class="p-2 w-24 text-lg bg-yellow-500 rounded-md font-semibold cursor-pointer" action="#{loginViewInstruc.validarInstruct()}" value="Log in"></h:commandButton>
                     </div>
                 </div>   
             </div>

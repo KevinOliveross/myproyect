@@ -23,7 +23,7 @@ public class Conexion {
     public Connection abrirConexion(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection(host,"root","24112000");
+            conexion = DriverManager.getConnection(host,"root","Neverbroke1212");
             
             if(conexion != null){
                 System.out.println("Conexion TRUE");

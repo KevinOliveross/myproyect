@@ -26,7 +26,7 @@ public class RutinaConexion {
         ResultSet rs;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gimnasio","root","24112000");
+            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gimnasio","root","Neverbroke1212");
             PreparedStatement st = cn.prepareStatement("select idrutina, idcliente, temaRutina from rutina");
             rs=st.executeQuery();
             lista =new ArrayList();
